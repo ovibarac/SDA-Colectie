@@ -92,8 +92,65 @@ void Colectie::adauga(TElem elem) {
 
 
 bool Colectie::sterge(TElem elem) {
-	/* de adaugat */
-	return false;
+	int nrA = nrAparitii(elem);
+	if(nrA == 0)
+		return false;
+
+	//gasim pozitia elementului in D
+	int i = 0;
+	for (i = 0; i < nD; i++) {
+		if (D[i] == elem) {
+			break;
+		}
+	}
+
+	if (nrA == 1) {
+		//daca apare o singura data se sterge din D si din P
+		//stergem D[i]
+		TElem* dNou = new TElem[cpD];
+
+		for (int j = 0; j < nD; j++) {
+			if (j!= i) {
+				dNou[j] = D[j];
+			}
+		}
+		delete[] D;
+		D = dNou;
+
+		//stergem P[j] = i
+		TElem* pNou = new TElem[cpP];
+
+		for (int j = 0; j < nP; j++) {
+			if (P[j] != i) {
+				pNou[j] = P[j];
+			}
+		}
+		delete[] P;
+		P = pNou;
+
+		nD--;
+		nP--;
+	}
+	else if (nrA > 1) {
+		//daca apare de mai multe ori se sterge o aparitie in P
+		TElem* pNou = new TElem[cpP];
+
+		bool sters = false;
+		for (int j = 0; j < nP; j++) {
+			if (P[j] != i || sters) {
+				pNou[j] = P[j];
+			}
+			if (P[j] == i) {
+				sters = true;
+			}
+		}
+		delete[] P;
+		P = pNou;
+
+		nP--;
+	}
+
+	return true;
 }
 
 
@@ -133,7 +190,6 @@ int Colectie::nrAparitii(TElem elem) const {
 			ct++;
 		}
 	}
-
 	return ct;
 }
 
@@ -144,8 +200,10 @@ int Colectie::dim() const {
 
 
 bool Colectie::vida() const {
-	/* de adaugat */
-	return true;
+	if (nD == 0 || nP == 0) {
+		return true;
+	}
+	return false;
 }
 
 IteratorColectie Colectie::iterator() const {
