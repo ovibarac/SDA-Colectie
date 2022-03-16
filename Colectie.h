@@ -30,9 +30,15 @@ private:
 	//vectorul de pozitii in D ale elementelor colectiei
 	int* P;
 
+	//redimensionarea vectorului de elemente distincte
+	void redimD();
+
+	//redimensionarea vectorului de pozitii
+	void redimP();
+
 public:
 		//constructorul implicit
-		Colectie(int);
+		Colectie();
 
 		//adauga un element in colectie
 		void adauga(TElem e);
