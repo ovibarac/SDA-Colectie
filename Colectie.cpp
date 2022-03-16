@@ -108,10 +108,11 @@ bool Colectie::sterge(TElem elem) {
 		//daca apare o singura data se sterge din D si din P
 		//stergem D[i]
 		TElem* dNou = new TElem[cpD];
-
+		int k = 0;
 		for (int j = 0; j < nD; j++) {
 			if (j!= i) {
-				dNou[j] = D[j];
+				dNou[k] = D[j];
+				k++;
 			}
 		}
 		delete[] D;
@@ -120,10 +121,18 @@ bool Colectie::sterge(TElem elem) {
 		//stergem P[j] = i
 		TElem* pNou = new TElem[cpP];
 
+		k = 0;
 		for (int j = 0; j < nP; j++) {
-			if (P[j] != i) {
-				pNou[j] = P[j];
+			if (P[j] > i) {
+				P[j]--; //pozitiile de dupa pozitia i vor scadea cu 1
+				pNou[k] = P[j];
+				k++;
 			}
+			else if (P[j] != i) {
+				pNou[k] = P[j];
+				k++;
+			}
+
 		}
 		delete[] P;
 		P = pNou;
@@ -136,9 +145,11 @@ bool Colectie::sterge(TElem elem) {
 		TElem* pNou = new TElem[cpP];
 
 		bool sters = false;
+		int k = 0;
 		for (int j = 0; j < nP; j++) {
 			if (P[j] != i || sters) {
-				pNou[j] = P[j];
+				pNou[k] = P[j];
+				k++;
 			}
 			if (P[j] == i) {
 				sters = true;

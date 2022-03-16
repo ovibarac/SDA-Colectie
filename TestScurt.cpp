@@ -2,6 +2,7 @@
 #include <assert.h>
 #include "Colectie.h"
 #include "IteratorColectie.h"
+#include <iostream>
 
 
 
@@ -31,6 +32,7 @@ void testAll() { //apelam fiecare functie sa vedem daca exista
 	ic.prim();
 	while (ic.valid()) {
 		TElem e = ic.element();
+		std::cout << e<< ' ';
 		ic.urmator();
 	}
 }

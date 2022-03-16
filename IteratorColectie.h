@@ -16,6 +16,9 @@ private:
 	const Colectie& col;
 	/* aici e reprezentarea pecifica a iteratorului*/
 
+	//elementul curent e pe pozitia curent din P
+	int curent;
+
 
 public:
 

@@ -3,27 +3,25 @@
 
 
 IteratorColectie::IteratorColectie(const Colectie& c): col(c) {
-	/* de adaugat */
+	curent = 0;
 }
 
 void IteratorColectie::prim() {
-	/* de adaugat */
+	curent = 0;
 }
 
 
 void IteratorColectie::urmator() {
-	/* de adaugat */
+	curent++;
 }
 
 
 bool IteratorColectie::valid() const {
-	/* de adaugat */
-	return false;
+	return curent < col.dim();
 }
 
 
 
 TElem IteratorColectie::element() const {
-	/* de adaugat */
-	return -1;
+	return col.D[col.P[curent]];
 }
