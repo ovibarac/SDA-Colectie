@@ -11,9 +11,28 @@ class Colectie
 
 private:
 	/* aici e reprezentarea */
+	
+	//capacitatea pentru D
+	int cpD;
+
+	//capacitatea pentru P
+	int cpP;
+
+	//numarul de elemente distincte
+	int nD;
+
+	//dimensiunea colectiei
+	int nP;
+
+	//vectorul de elemente distincte
+	TElem* D;
+
+	//vectorul de pozitii in D ale elementelor colectiei
+	int* P;
+
 public:
 		//constructorul implicit
-		Colectie();
+		Colectie(int);
 
 		//adauga un element in colectie
 		void adauga(TElem e);
