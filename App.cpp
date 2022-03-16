@@ -6,6 +6,6 @@ using namespace std;
 
 int main() {
 	testAll();
-//	testAllExtins();
+	testAllExtins();
 	cout<<"End";
 }

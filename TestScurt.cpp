@@ -32,7 +32,7 @@ void testAll() { //apelam fiecare functie sa vedem daca exista
 	ic.prim();
 	while (ic.valid()) {
 		TElem e = ic.element();
-		std::cout << e<< ' ';
+		//std::cout << e<< ' ';
 		ic.urmator();
 	}
 }
