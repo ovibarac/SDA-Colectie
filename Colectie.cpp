@@ -7,6 +7,7 @@ using namespace std;
 
 
 Colectie::Colectie() {
+    //Θ(1)
 	int cp = 1; //capacitatea initiala
 
 	this->cpD = cp;
@@ -21,6 +22,7 @@ Colectie::Colectie() {
 
 
 void Colectie::redimD() {
+    //Θ(n)
 	//alocare spatiu dublu
 	TElem* dNou = new TElem[2 * cpD];
 
@@ -40,6 +42,7 @@ void Colectie::redimD() {
 }
 
 void Colectie::redimP() {
+    //Θ(n)
 	//alocare spatiu dublu
 	TElem* pNou = new TElem[2 * cpP];
 
@@ -59,6 +62,7 @@ void Colectie::redimP() {
 }
 
 void Colectie::adauga(TElem elem) {
+    //Θ(n)
 	//cauta elementul in vectorul de elemente distincte
 	int i = 0;
 	for (i = 0; i < nD; i++) {
@@ -92,6 +96,7 @@ void Colectie::adauga(TElem elem) {
 
 
 bool Colectie::sterge(TElem elem) {
+    //Θ(n)
 	int nrA = nrAparitii(elem);
 	if(nrA == 0)
 		return false;
@@ -166,6 +171,7 @@ bool Colectie::sterge(TElem elem) {
 
 
 bool Colectie::cauta(TElem elem) const {
+    //Θ(n)
 	int i = 0;
 	for (i = 0; i < nD; i++) {
 		if (D[i] == elem) {
@@ -182,6 +188,7 @@ bool Colectie::cauta(TElem elem) const {
 }
 
 int Colectie::nrAparitii(TElem elem) const {
+    //Θ(n)
 	int i = 0;
 	for (i = 0; i < nD; i++) {
 		if (D[i] == elem) {
@@ -206,11 +213,13 @@ int Colectie::nrAparitii(TElem elem) const {
 
 
 int Colectie::dim() const {
+    //Θ(1)
 	return nP;
 }
 
 
 bool Colectie::vida() const {
+    //Θ(1)
 	if (nD == 0 || nP == 0) {
 		return true;
 	}
@@ -218,11 +227,13 @@ bool Colectie::vida() const {
 }
 
 IteratorColectie Colectie::iterator() const {
+    //Θ(1)
 	return  IteratorColectie(*this);
 }
 
 
 Colectie::~Colectie() {
+    //Θ(1)
 	delete[] D;
 	delete[] P;
 }
